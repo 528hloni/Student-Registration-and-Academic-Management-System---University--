@@ -15,6 +15,19 @@ $stmt = $pdo->query($sql);
 //store all students in an array
 $students = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
+//button action
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
+    $action = $_POST['action'];
+    if ($action ==='Register New Student'){
+        header('Location: register.php');
+        exit();
+        
+
+    }
+}
+
+
+
 
 
 
@@ -30,7 +43,7 @@ $students = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <h1> Student List & Management Dashboard </h1>
     <br>
     <form method="POST">
-    <button type="button" onClick="register_student.php">Register New Student</button>
+    <input type="submit" name="action" value="Register New Student">
     <br><br>
     <input type="text" id="search_input" name="search_input" placeholder="Search Student...">
     <select id="filter" name="filter">
@@ -81,7 +94,12 @@ $students = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <td>
                 <a href="view.php">View</a> | 
                 <a href="update.php">Update</a> | 
-                <a href="delete.php">Delete</a>
+                
+<a href="delete.php?id=<?php echo $row['student_id']; ?>"
+   onclick="return confirm('Are you sure you want to delete this student?');">
+   Delete
+</a>
+                       
             </td>
         </tr>
         <?php endforeach; ?>
