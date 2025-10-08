@@ -34,7 +34,7 @@ if (isset($_GET['id'])) {
 
         file_put_contents($logFile, $logEntry, FILE_APPEND);
 
-        //Redirect with success message
+        //Redirect with  message
         echo '<script>
         alert("Successfully deleted student record");
         window.location.href = "dashboard.php";
@@ -42,9 +42,17 @@ if (isset($_GET['id'])) {
         exit();
         
     } else {
-        echo "Student not found.";
+    
+        echo '<script>
+        alert("Student not found");
+        window.location.href = "dashboard.php";
+       </script>';
     }
 } else {
-    echo "Invalid request.";
+    
+    echo '<script>
+        alert("Invalid request");
+        window.location.href = "dashboard.php";
+       </script>';
 }
 ?>

@@ -93,12 +93,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
             <td><?php echo htmlentities($row['course']); ?></td>
             <td>
                 <a href="view.php">View</a> | 
-                <a href="update.php">Update</a> | 
+                <a href="update.php?student_id=<?= $row['student_id'] ?>">Update</a> | 
                 
-<a href="delete.php?id=<?php echo $row['student_id']; ?>"
-   onclick="return confirm('Are you sure you want to delete this student?');">
-   Delete
-</a>
+                <a href="delete.php?id=<?php echo $row['student_id']; // attaches the students ID?>"  
+                onclick="return confirm('Are you sure you want to delete this student?');">
+                Delete</a>
+
                        
             </td>
         </tr>

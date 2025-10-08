@@ -8,12 +8,14 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['role'] !== 'Administrator') {
     exit();
 }
 
+
+
 //user input
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
     $action = $_POST['action'];
     $name = htmlentities(trim($_POST['name']??''));
     $surname = htmlentities(trim($_POST['surname']??''));
-    $identity_number = filter_input(INPUT_POST, 'identity_number', FILTER_VALIDATE_INT);
+    $identity_number = htmlentities(trim($_POST['identity_number'] ?? ''));
     $date_of_birth = htmlentities(trim($_POST['date_of_birth']??''));
     $course = htmlentities(trim($_POST['course']??''));
     $enrollment_date = htmlentities(trim($_POST['enrollment_date']??''));
@@ -23,8 +25,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
 $password = $identity_number . strtoupper(substr($name, 0, 1)) . strtoupper(substr($surname, 0, 1));
 
 if($action === 'Register Student' && $name && $surname && $identity_number && $date_of_birth && $course && $enrollment_date && $email){
-
-
 
     $stmt1 = $pdo->prepare("INSERT INTO students (name, surname, identity_number, date_of_birth, course, enrollment_date, email) VALUES (?,?,?,?,?,?,?)");
     $stmt1->execute([$name, $surname, $identity_number, $date_of_birth, $course, $enrollment_date, $email]);
@@ -41,6 +41,13 @@ if($action === 'Register Student' && $name && $surname && $identity_number && $d
          alert("Operation unsuccessful")
         </script>';
     }
+
+    if($action === 'Return To Dashboard'){
+     header('Location: dashboard.php');
+        exit();
+}    
+
+
 }
 ?>
 
@@ -86,7 +93,8 @@ if($action === 'Register Student' && $name && $surname && $identity_number && $d
         <input type="email" id="email" name="email" placeholder="Email Address" required>
         <br><br>
         <input type="submit" name="action" value="Register Student">
-        <input type="reset" name="action" value="Reset">
+        <input type="reset" name="action" value="Reset"> <br>
+        <input type="submit" name="action" value="Return To Dashboard" formnovalidate>
 
 
 
