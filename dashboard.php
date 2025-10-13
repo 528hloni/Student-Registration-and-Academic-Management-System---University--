@@ -8,6 +8,8 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['role'] !== 'Administrator') {
     exit();
 }
 
+
+try{
     // fetch data to display in table
 $sql = "SELECT student_id, name, surname, enrollment_date, course FROM students";
 $stmt = $pdo->query($sql);
@@ -24,6 +26,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
         
 
     }
+}
+} catch (Exception $e) {
+    // Handle general errors
+    echo "Error: " . $e->getMessage();
 }
 
 
@@ -92,7 +98,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
             <td><?php echo htmlentities($row['enrollment_date']); ?></td>
             <td><?php echo htmlentities($row['course']); ?></td>
             <td>
-                <a href="view.php">View</a> | 
+                <a href="profile.php?student_id=<?= $row['student_id'] ?>">View</a> | 
                 <a href="update.php?student_id=<?= $row['student_id'] ?>">Update</a> | 
                 
                 <a href="delete.php?id=<?php echo $row['student_id']; // attaches the students ID?>"  

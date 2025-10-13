@@ -3,12 +3,16 @@ include('connection.php');
 session_start();
 
 
+
+
 //user input
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
     $action = $_POST['action'];
     $email = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
     $password = trim($_POST['password']??'');
     $role = htmlentities(trim($_POST['role']??''));
+
+    try{
 
 
     if ($action === 'Login' && $email && $password && $role){ //checking if button Login was clicked and all inputs are filled
@@ -34,29 +38,43 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
                         exit();
                     }
                     elseif ($role == ('Student')){
-                         $_SESSION['email'] = $user['email'];
+                   
+                        $stmt = $pdo->prepare("SELECT * FROM students WHERE email = ?");
+                        $stmt->execute([$email]);
+                        $student = $stmt->fetch(PDO::FETCH_ASSOC);
+                        $student_id = $student['student_id'];
+
+
+
+                $_SESSION['email'] = $user['email'];
                 $_SESSION['role'] = $user['role'];
                 $_SESSION['loggedin'] = true;
-                        header('Location: profile.php');
+                         header('Location: profile.php?student_id=' . $student_id);
                         exit();
                     }
 
                 }else{ //alert if password is incorrect
                     echo '<script>  
-                    alert("Login failed, Invalid email,password or role 111!!! ")
+                    alert("Login failed, Invalid email,password or role! ")
                     </script>';
                 }
             
             } else { //alert if user not found
      echo '<script>  
-    alert("Login failed, Invalid email, password or role 222!!!")
+    alert("Login failed, Invalid email, password or role !")
     </script>';
-    header("Location: ".$_SERVER['PHP_SELF']); 
-        exit();
+   
 }
 
     }
+
+} catch (Exception $e) {
+    // Handle general errors
+    echo "Error: " . $e->getMessage();
 }
+}
+
+
 ?>
 
 <!DOCTYPE html>

@@ -9,6 +9,10 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['role'] !== 'Administrator') {
     exit();
 }
 
+
+
+try{
+
 //Getting student_id from URL and validating it (using GET method)
 if (isset($_GET['student_id']) && is_numeric($_GET['student_id'])) {
     $student_id = trim($_GET['student_id']);
@@ -92,6 +96,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
         }
  
         }
+        } catch (Exception $e) {
+    // General error handler
+    echo "Error: " . $e->getMessage();
+}
 
     
 
