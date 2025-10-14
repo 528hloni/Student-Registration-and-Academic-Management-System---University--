@@ -26,6 +26,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
         
 
     }
+
+    if ($action ==='Logout'){
+        session_destroy();
+        header('Location: login.php');
+        exit();
+    }
 }
 } catch (Exception $e) {
     // Handle general errors
@@ -50,6 +56,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
     <br>
     <form method="POST">
     <input type="submit" name="action" value="Register New Student">
+    
+    <input type="submit" name="action" value="Logout">
     <br><br>
     <input type="text" id="search_input" name="search_input" placeholder="Search Student...">
     <select id="filter" name="filter">
@@ -113,7 +121,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
 </table>
 
 
-<script>
+<script> //Javascript for searching, filtering and sorting
 const searchInput = document.getElementById('search_input');
 const filterSelect = document.getElementById('filter');
 const sortSelect = document.getElementById('sort');
@@ -124,7 +132,7 @@ function applyFiltersAndSort() {
 
     const searchValue = searchInput.value.toLowerCase();
     const selectedCourse = filterSelect.value.toLowerCase();
-    const sortOption = sortSelect.value; //**** */
+    const sortOption = sortSelect.value; 
 
     let rows = Array.from(tableBody.getElementsByTagName('tr')); // grab all <tr> rows inside <tbody> and convert the result to a real array so we can use .forEach, .filter, .sort
 

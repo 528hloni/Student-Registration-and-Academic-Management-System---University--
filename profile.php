@@ -30,7 +30,19 @@ if (isset($_GET['student_id']) && is_numeric($_GET['student_id'])) {
 } else {
     echo "Invalid request.";
     exit();
-}} catch (Exception $e) {
+
+}
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
+    $action = $_POST['action'];
+    if ($action ==='Logout'){
+        session_destroy();
+        header('Location: login.php');
+        exit();
+    }
+}
+
+} catch (Exception $e) {
     // Handle general errors
     echo "Error: " . $e->getMessage();
 }
@@ -49,6 +61,13 @@ if (isset($_GET['student_id']) && is_numeric($_GET['student_id'])) {
     <title>Document</title>
 </head>
 <body>
+
+<form method="POST">
+    <input type="submit" name="action" value="Logout">
+</form>    
+
+
+
    <h1> Student Profile : <?= htmlentities($student['name']) ?> <?= htmlentities($student['surname']) ?> </h1> 
 
 

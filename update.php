@@ -45,6 +45,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
     $email = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
 
 
+     if ($action ==='Logout'){
+        session_destroy();
+        header('Location: login.php');
+        exit();
+    }
+
+
     if($action === 'Return To Dashboard'){
      header('Location: dashboard.php');
         exit();
@@ -85,7 +92,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
             $missing = [];
             if (!$name) $missing[] = "Name";
             if (!$surname) $missing[] = "Surname";
-            if (!$identity_number) $missing[] = "Identity Number";
+            if (!$identity_number) {
+                $missing[] = "Identity Number";
+                } elseif (!preg_match('/^\d{13}$/', $identity_number)) {
+                $missing[] = "Identity Number (must be exactly 13 digits)";
+                }
             if (!$date_of_birth) $missing[] = "Date of Birth";
             if (!$course) $missing[] = "Course";
             if (!$enrollment_date) $missing[] = "Enrollment Date";
@@ -129,6 +140,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
     <title>Document</title>
 </head>
 <body>
+    <input type="submit" name="action" value="Logout">
+    <br><br>
+
+
     <h1> Update Student : <?= htmlentities($student['name']) ?> <?= htmlentities($student['surname']) ?> </h1>
     <br><br>
         <br> <br>
