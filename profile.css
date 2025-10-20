@@ -1,0 +1,85 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #e9f2ff;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+/* Main Container */
+.container {
+    width: 90%;
+    max-width: 800px;
+    background-color: #fff;
+    margin: 50px auto;
+    padding: 40px 50px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Title */
+h1 {
+    text-align: center;
+    color: #0d6efd;
+    margin-bottom: 30px;
+}
+
+/* Subheadings */
+h2, h3 {
+    color: #0d6efd;
+}
+
+/* Paragraph styling */
+p {
+    margin-bottom: 10px;
+    font-size: 15px;
+    line-height: 1.5;
+}
+
+strong {
+    color: #0d6efd;
+}
+
+/* Buttons */
+button, input[type="submit"] {
+    background-color: #0d6efd;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background 0.3s;
+    margin-top: 10px;
+}
+
+button:hover, input[type="submit"]:hover {
+    background-color: #0b5ed7;
+}
+
+/* Logout form */
+.logout-form {
+    text-align: right;
+    margin-bottom: 20px;
+}
+
+/* Links wrapping buttons */
+a {
+    text-decoration: none;
+}
+
+/* Divider line */
+hr {
+    border: 0;
+    border-top: 1px solid #ddd;
+    margin: 30px 0;
+}
+
+/* Centered sections for student document downloads */
+.download-section {
+    text-align: center;
+}
+
+.download-section h3 {
+    margin-bottom: 10px;
+}

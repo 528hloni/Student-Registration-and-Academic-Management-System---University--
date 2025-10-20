@@ -18,9 +18,8 @@ $pdf->AddPage();
 $pdf->SetFont('Arial', 'B', 16);
 
 if ($type === 'profile') {
-    // ========================================
+
     // PROFILE SUMMARY REPORT
-    // ========================================
     $pdf->Cell(0, 10, 'UNIVERSITY PORTAL', 0, 1, 'C');
     $pdf->Cell(0, 10, 'Student Profile Summary', 0, 1, 'C');
     $pdf->Ln(10);
@@ -49,9 +48,8 @@ if ($type === 'profile') {
     $filename = 'profile_' . $student_id . '.pdf';
     
 } else {
-    // ========================================
+    
     // REGISTRATION CONFIRMATION
-    // ========================================
     $pdf->Cell(0, 10, 'UNIVERSITY PORTAL', 0, 1, 'C');
     $pdf->Cell(0, 10, 'Registration Confirmation', 0, 1, 'C');
     $pdf->Ln(10);

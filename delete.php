@@ -8,9 +8,12 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['role'] !== 'Administrator') {
     exit();
 }
 
+try{
 //check if ID is passed
 if (isset($_GET['id'])) {
     $id = intval($_GET['id']); // sanitize input
+
+
 
     //Fetch student info before deletion (Log deleted record information to a file)
     $stmt = $pdo->prepare("SELECT * FROM students WHERE student_id = ?");
@@ -55,4 +58,9 @@ if (isset($_GET['id'])) {
         window.location.href = "dashboard.php";
        </script>';
 }
+}catch (Exception $e) {
+    // General error handler
+    echo "Error: " . $e->getMessage();
+}
+
 ?>

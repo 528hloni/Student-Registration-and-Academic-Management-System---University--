@@ -49,19 +49,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="dashboard.css">
 </head>
 <body>
+
+<div class="container">
+
     <h1> Student List & Management Dashboard </h1>
     <br>
     <form method="POST">
     <input type="submit" name="action" value="Register New Student">
     
     <input type="submit" name="action" value="Logout">
+
+     
     <br><br>
     <input type="text" id="search_input" name="search_input" placeholder="Search Student...">
     <select id="filter" name="filter">
-            <option value="" disabled selected>Filter By Course</option>
+            <option value="" >Filter By Course</option>
             <option value="Computer Science">Computer Science</option>
             <option value="Engineering">Engineering</option>
             <option value="Business">Business</option>
@@ -72,7 +78,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
             <option value="Education">Education</option>
         </select>
     <select id="sort" name="sort">
-        <option value="" disabled selected>Sort</option>
+        <option value="" >Sort</option>
         <option value="name_asc">Name A-Z</option>
         <option value="name_desc">Name Z-A</option>
         <option value="enrolled_asc">Enrolled Date Ascending</option>
@@ -119,6 +125,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
         <?php endforeach; ?>
     </tbody>
 </table>
+</div>
 
 
 <script> //Javascript for searching, filtering and sorting

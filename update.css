@@ -1,0 +1,79 @@
+/* General page setup */
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #f4f6f8;
+  display: flex;
+  justify-content: center;
+  padding: 50px 0;   /* Give vertical padding instead of centering */
+  margin: 0;
+}
+
+/* Form container */
+.container {
+  background-color: #fff;
+  padding: 30px 40px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  width: 450px;
+  text-align: center;
+}
+
+/* Heading */
+.container h1 {
+  color: #007bff;       /* Make the text blue and visible */
+  font-size: 26px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* Input fields and select */
+form input[type="text"],
+form input[type="number"],
+form input[type="date"],
+form input[type="email"],
+form select {
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0 16px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 15px;
+}
+
+/* Buttons */
+form input[type="submit"],
+form input[type="reset"] {
+  width: 48%;
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 15px;
+  transition: background-color 0.3s ease;
+}
+
+form input[type="submit"]:hover,
+form input[type="reset"]:hover {
+  background-color: #0056b3;
+}
+
+/* Secondary button (Return to Dashboard) */
+form input[value="Return To Dashboard"] {
+  background-color: #6c757d;
+}
+
+form input[value="Return To Dashboard"]:hover {
+  background-color: #5a6268;
+}
+
+/* Label styling */
+label {
+  font-weight: bold;
+  color: #555;
+  display: block;
+  text-align: left;
+  margin-bottom: 5px;
+}

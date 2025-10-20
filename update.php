@@ -45,12 +45,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
     $email = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
 
 
-     if ($action ==='Logout'){
-        session_destroy();
-        header('Location: login.php');
-        exit();
-    }
-
+    
 
     if($action === 'Return To Dashboard'){
      header('Location: dashboard.php');
@@ -137,13 +132,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Update Student</title>
+  <link rel="stylesheet" href="update.css">
 </head>
 <body>
-    <input type="submit" name="action" value="Logout">
-    <br><br>
+    
 
-
+<div class="container">
     <h1> Update Student : <?= htmlentities($student['name']) ?> <?= htmlentities($student['surname']) ?> </h1>
     <br><br>
         <br> <br>
@@ -204,5 +199,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
         <input type="reset" name="action" value="Reset"> <br>
         <input type="submit" name="action" value="Return To Dashboard" formnovalidate>
 </form>
+    </div>
 </body>
 </html>

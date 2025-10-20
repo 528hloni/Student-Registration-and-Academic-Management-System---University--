@@ -8,7 +8,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['role'] !== 'Administrator') {
     exit();
 }
 
-
+try{
 
 //user input
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
@@ -24,6 +24,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
     // generating password: ID number + first letter of name + first letter of surname
 $password = $identity_number . strtoupper(substr($name, 0, 1)) . strtoupper(substr($surname, 0, 1));
 
+
+
+
 if($action === 'Register Student' && $name && $surname && $identity_number && $date_of_birth && $course && $enrollment_date && $email){
 
     $stmt1 = $pdo->prepare("INSERT INTO students (name, surname, identity_number, date_of_birth, course, enrollment_date, email) VALUES (?,?,?,?,?,?,?)");
@@ -36,19 +39,38 @@ if($action === 'Register Student' && $name && $surname && $identity_number && $d
          alert("New student added successfull")
         </script>';
 
-    } else {
-     echo   '<script>
-         alert("Operation unsuccessful")
-        </script>';
-    }
+     } else {
+            // Validation failed - show which fields are missing
+            $missing = [];
+            if (!$name) $missing[] = "Name";
+            if (!$surname) $missing[] = "Surname";
+             if (!$identity_number) {
+                $missing[] = "Identity Number";
+                } elseif (!preg_match('/^\d{13}$/', $identity_number)) {
+                $missing[] = "Identity Number (must be exactly 13 digits)";
+                }
+            if (!$date_of_birth) $missing[] = "Date of Birth";
+            if (!$course) $missing[] = "Course";
+            if (!$enrollment_date) $missing[] = "Enrollment Date";
+            if (!$email) $missing[] = "Email";
+            
+            $errorMsg = "Missing or invalid fields: " . implode(", ", $missing);
+            echo '<script>alert("' . $errorMsg . '");</script>';
+        }
 
     if($action === 'Return To Dashboard'){
      header('Location: dashboard.php');
         exit();
 }    
 
-
 }
+} catch (Exception $e) {
+    // General error handler
+    echo "Error: " . $e->getMessage();
+}
+
+
+
 ?>
 
 
@@ -58,10 +80,13 @@ if($action === 'Register Student' && $name && $surname && $identity_number && $d
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Register Student</title>
+    <link rel="stylesheet" href="register.css">
 </head>
 <body>
-    <h1>Register New Student</h1>
+    <div class="container">
+        
+     <h1>Register New Student</h1>
         <br><br>
         <form method="POST">
             <input type="text" id="name" name="name" placeholder="Name" required>
@@ -92,13 +117,16 @@ if($action === 'Register Student' && $name && $surname && $identity_number && $d
         <br><br>
         <input type="email" id="email" name="email" placeholder="Email Address" required>
         <br><br>
+        <div class="button-group">
         <input type="submit" name="action" value="Register Student">
         <input type="reset" name="action" value="Reset"> <br>
         <input type="submit" name="action" value="Return To Dashboard" formnovalidate>
+        </div>
 
 
 
         </form>
+     </div>
 
 </body>
 </html>

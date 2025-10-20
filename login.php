@@ -77,39 +77,37 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
 
 ?>
 
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>University</title>
+    <link rel="stylesheet" href="login.css">
 </head>
 <body>
-    <h1>University Login</h1>
-    <form method="POST">
-        <label for="email">Email Address</label>
-        <input type="email" id="email" name="email" placeholder="example@gmail.com" required>
-        <br>
-        <label for="password">Password</label>
-        <input type="password" id="password" name="password" required>
-        <br>
-        <label for="role">Role</label>
-        <select id="role" name="role" required>
-            <option value="" disabled selected>Select Role</option>
-            <option value="Administrator">Administrator</option>
-            <option value="Student">Student</option>
-        </select>
-        <br>
-        <input type="submit" name="action" value="Login">
+    <div class="container">
+        <h1>University Login</h1>
+        <form method="POST">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" placeholder="example@gmail.com" required>
 
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" required>
 
+            <label for="role">Role</label>
+            <select id="role" name="role" required>
+                <option value="" disabled selected>Select Role</option>
+                <option value="Administrator">Administrator</option>
+                <option value="Student">Student</option>
+            </select>
 
-
-    </form>
-    
+            <input type="submit" name="action" value="Login">
+        </form>
+    </div>
 </body>
 </html>
-
-
 
 
