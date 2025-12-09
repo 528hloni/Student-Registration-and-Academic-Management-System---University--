@@ -4,7 +4,7 @@ body {
   background-color: #f4f6f8;
   display: flex;
   justify-content: center;
-  padding: 50px 0;   /* Give vertical padding instead of centering */
+  padding: 50px 0;   
   margin: 0;
 }
 
@@ -20,7 +20,7 @@ body {
 
 /* Heading */
 .container h1 {
-  color: #007bff;       /* Make the text blue and visible */
+  color: #007bff;       
   font-size: 26px;
   font-weight: bold;
   margin-bottom: 20px;

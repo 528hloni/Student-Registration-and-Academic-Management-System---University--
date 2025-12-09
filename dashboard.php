@@ -111,7 +111,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
             <td><?php echo htmlentities($row['surname']); ?></td>
             <td><?php echo htmlentities($row['enrollment_date']); ?></td>
             <td><?php echo htmlentities($row['course']); ?></td>
-            <td>
+
+             <td>
                 <a href="profile.php?student_id=<?= $row['student_id'] ?>">View</a> | 
                 <a href="update.php?student_id=<?= $row['student_id'] ?>">Update</a> | 
                 
@@ -121,6 +122,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
 
                        
             </td>
+            
         </tr>
         <?php endforeach; ?>
     </tbody>
