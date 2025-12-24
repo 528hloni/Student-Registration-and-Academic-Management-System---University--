@@ -6,7 +6,7 @@ body {
     color: #333;
 }
 
-/* Main Container */
+
 .container {
     width: 90%;
     max-width: 800px;
@@ -17,19 +17,19 @@ body {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-/* Title */
+
 h1 {
     text-align: center;
     color: #0d6efd;
     margin-bottom: 30px;
 }
 
-/* Subheadings */
+
 h2, h3 {
     color: #0d6efd;
 }
 
-/* Paragraph styling */
+
 p {
     margin-bottom: 10px;
     font-size: 15px;
@@ -40,7 +40,7 @@ strong {
     color: #0d6efd;
 }
 
-/* Buttons */
+
 button, input[type="submit"] {
     background-color: #0d6efd;
     color: white;
@@ -57,25 +57,25 @@ button:hover, input[type="submit"]:hover {
     background-color: #0b5ed7;
 }
 
-/* Logout form */
+
 .logout-form {
     text-align: right;
     margin-bottom: 20px;
 }
 
-/* Links wrapping buttons */
+
 a {
     text-decoration: none;
 }
 
-/* Divider line */
+
 hr {
     border: 0;
     border-top: 1px solid #ddd;
     margin: 30px 0;
 }
 
-/* Centered sections for student document downloads */
+
 .download-section {
     text-align: center;
 }
