@@ -7,12 +7,12 @@ backend logic with PHP, database interaction and secure data handling using MySQ
 
 ##  Features
 **Admin Functionality**
--Register new students
--View a list of all registered students
--View individual student profiles
--Update student information
--Delete student records (with confirmation prompt)
--Secure database operations using prepared statements
+- Register new students
+- View a list of all registered students
+- View individual student profiles
+- Update student information
+- Delete student records (with confirmation prompt)
+- Secure database operations using prepared statements
 
 **Student Functionality**
 -View personal academic profile
