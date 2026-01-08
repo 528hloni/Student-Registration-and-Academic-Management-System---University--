@@ -17,8 +17,8 @@ backend logic with PHP, database interaction and secure data handling using MySQ
 **Student Functionality**
 - View personal academic profile
 - Generate and view reports:
-  = Profile Summary Report
-  = Registration Confirmation Slip
+  - Profile Summary Report
+  - Registration Confirmation Slip
 
 **Reports**
 - Auto-generated profile summary
