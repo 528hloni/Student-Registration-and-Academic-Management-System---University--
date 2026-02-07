@@ -4,7 +4,7 @@ session_start();
 
 //session check: only admin allowed
 if (!isset($_SESSION['loggedin']) || $_SESSION['role'] !== 'Administrator') {
-    header("Location: login.php");
+    header("Location: index.php");
     exit();
 }
 

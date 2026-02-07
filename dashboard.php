@@ -4,7 +4,7 @@ session_start();
 
 //session check: only admin is allowed here
 if (!isset($_SESSION['loggedin']) || $_SESSION['role'] !== 'Administrator') {
-    header("Location: login.php");
+    header("Location: index.php");
     exit();
 }
 
@@ -29,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
 
     if ($action ==='Logout'){
         session_destroy();
-        header('Location: login.php');
+        header('Location: index.php');
         exit();
     }
 }

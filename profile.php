@@ -5,7 +5,7 @@ session_start();
 
 
 if (!isset($_SESSION['loggedin']) || ($_SESSION['role'] !== 'Administrator' && $_SESSION['role'] !== 'Student')) {
-    header("Location: login.php");
+    header("Location: index.php");
     exit();
 }
 
@@ -37,7 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
     $action = $_POST['action'];
     if ($action ==='Logout'){
         session_destroy();
-        header('Location: login.php');
+        header('Location: index.php');
         exit();
     }
 }
